@@ -1,9 +1,9 @@
 cv_opticalflow_prylk.cpp
 ====
-OpenCV‚ğg‚Á‚½ƒIƒvƒeƒBƒJƒ‹ƒtƒ[‚ÌƒTƒ“ƒvƒ‹B
+OpenCVã‚’ä½¿ã£ãŸã‚ªãƒ—ãƒ†ã‚£ã‚«ãƒ«ãƒ•ãƒ­ãƒ¼ã®ã‚µãƒ³ãƒ—ãƒ«ã€‚
 
-cv::goodFeaturesToTrack()‚Æcv::calcOpticalFlowPyrLK()‚ğg—p‚µA
-ŒŸo‚µ‚½“Á’¥“_‚ÌƒIƒvƒeƒBƒJƒ‹ƒtƒ[‚ğ’ÇÕB
+cv::goodFeaturesToTrack()ã¨cv::calcOpticalFlowPyrLK()ã‚’ä½¿ç”¨ã—ã€
+æ¤œå‡ºã—ãŸç‰¹å¾´ç‚¹ã®ã‚ªãƒ—ãƒ†ã‚£ã‚«ãƒ«ãƒ•ãƒ­ãƒ¼ã‚’è¿½è·¡ã€‚
 
 <pre>
 
@@ -16,11 +16,11 @@ void append_features(const cv::Mat &gray_img, std::vector&lt;cv::Point2f> &featu
 
 int main(int argc, char* argv[])
 {
-    E
-    E
-    E
+    ãƒ»
+    ãƒ»
+    ãƒ»
     while(true) {
-        // 1ƒtƒŒ[ƒ€‘O‚Ìó‘Ô‚ğ•Û‘¶
+        // 1ãƒ•ãƒ¬ãƒ¼ãƒ å‰ã®çŠ¶æ…‹ã‚’ä¿å­˜
         features0 = features1;
         features1.clear();
 
@@ -35,11 +35,11 @@ int main(int argc, char* argv[])
             std::vector&lt;uchar> status;
             std::vector&lt;float> err;
 
-            // “Á’¥“_‚ÌƒIƒvƒeƒBƒJƒ‹ƒtƒ[‚ğŒvZ
+            // ç‰¹å¾´ç‚¹ã®ã‚ªãƒ—ãƒ†ã‚£ã‚«ãƒ«ãƒ•ãƒ­ãƒ¼ã‚’è¨ˆç®—
             cv::calcOpticalFlowPyrLK(frame0_gray, frame1_gray, features0, features1,
                 status, err, winsize, 3, term_criteria, 0, epsilon);
 
-            // ƒgƒ‰ƒbƒLƒ“ƒO‚Å‚«‚½“Á’¥“_‚Ì‚İc‚·
+            // ãƒˆãƒ©ãƒƒã‚­ãƒ³ã‚°ã§ããŸç‰¹å¾´ç‚¹ã®ã¿æ®‹ã™
             int count = 0;
             for (unsigned int i = 0; i &lt; features1.size(); ++i) {
                 if (status[i]) {
@@ -48,12 +48,12 @@ int main(int argc, char* argv[])
             }
             features1.resize(count);
 
-            // “Á’¥“_‚ª­‚È‚¢ê‡‚Í’Ç‰Á‚µ‚Ä‚¨‚­
+            // ç‰¹å¾´ç‚¹ãŒå°‘ãªã„å ´åˆã¯è¿½åŠ ã—ã¦ãŠã
             if (features1.size() &lt; MIN_COUNT) {
                 append_features(frame1_gray, features1);
             }
         }
-    E
-    E
-    E
+    ãƒ»
+    ãƒ»
+    ãƒ»
 </pre>
