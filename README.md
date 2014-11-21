@@ -7,9 +7,9 @@ cv::goodFeaturesToTrack()とcv::calcOpticalFlowPyrLK()を使用し、
 
 <pre>
 
-void append_features(const cv::Mat &gray_img, std::vector<cv::Point2f> &features)
+void append_features(const cv::Mat &gray_img, std::vector&lt;cv::Point2f> &features)
 {
-    std::vector<cv::Point2f> points;
+    std::vector&lt;cv::Point2f> points;
     cv::goodFeaturesToTrack(gray_img, points, MAX_COUNT, 0.01, 10, cv::Mat(), 3, 0, 0.04);
     features.insert(features.end(), points.begin(), points.end());
 }
@@ -32,8 +32,8 @@ int main(int argc, char* argv[])
             append_features(frame1_gray, features1);
         }
         else {
-            std::vector<uchar> status;
-            std::vector<float> err;
+            std::vector&lt;uchar> status;
+            std::vector&lt;float> err;
 
             // 特徴点のオプティカルフローを計算
             cv::calcOpticalFlowPyrLK(frame0_gray, frame1_gray, features0, features1,
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 
             // トラッキングできた特徴点のみ残す
             int count = 0;
-            for (unsigned int i = 0; i < features1.size(); ++i) {
+            for (unsigned int i = 0; i &lt; features1.size(); ++i) {
                 if (status[i]) {
                     features1[count++] = features1[i];
                 }
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
             features1.resize(count);
 
             // 特徴点が少ない場合は追加しておく
-            if (features1.size() < MIN_COUNT) {
+            if (features1.size() &lt; MIN_COUNT) {
                 append_features(frame1_gray, features1);
             }
         }
