@@ -2,27 +2,25 @@
 // cv_opticalflow_prylk.cpp - OpenCVを使ったオプティカルフローのサンプル
 //
 // 参考 :
-//     OpenCV2.4.10/sources/samples/cpp/lkdemo.cpp
+//     OpenCV3.0/sources/samples/cpp/lkdemo.cpp
 //
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/highgui/highgui.hpp>
+#ifdef _WIN32
+#include <SDKDDKVer.h>
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#pragma warning(disable: 4819)
+#ifdef _DEBUG
+#pragma comment(lib, "opencv_world300d.lib")
+#else
+#endif
+#pragma comment(lib, "opencv_world300.lib")
+#endif
+
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
 #include <opencv2/video/tracking.hpp>
 
 #include <vector>
-
-#ifdef _WIN32
-#ifdef _DEBUG
-#pragma comment(lib, "opencv_core2410d.lib")
-#pragma comment(lib, "opencv_imgproc2410d.lib")
-#pragma comment(lib, "opencv_highgui2410d.lib")
-#pragma comment(lib, "opencv_video2410d.lib")
-#else
-#pragma comment(lib, "opencv_core2410.lib")
-#pragma comment(lib, "opencv_imgproc2410.lib")
-#pragma comment(lib, "opencv_highgui2410.lib")
-#pragma comment(lib, "opencv_video2410.lib")
-#endif
-#endif
 
 // オプティカルフロー格納クラス
 class OpticalFlow_GoodFeature {
@@ -52,7 +50,7 @@ public:
 			cv::cvtColor(target_img, target_img, CV_BGR2GRAY);
 		}
 
-		cv::vector<cv::Point2f> results;
+		std::vector<cv::Point2f> results;
 		cv::goodFeaturesToTrack(target_img,results, max_count_, 0.01, 10, cv::Mat(), 3, 0, 0.04);
 
 		features1_.insert(features1_.end(), results.begin(), results.end());
