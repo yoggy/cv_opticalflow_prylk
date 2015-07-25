@@ -2,7 +2,7 @@
 // cv_opticalflow_prylk.cpp - OpenCVを使ったオプティカルフローのサンプル
 //
 // 参考 :
-//     OpenCV3.0/sources/samples/cpp/lkdemo.cpp
+//     https://github.com/Itseez/opencv/blob/master/samples/cpp/lkdemo.cpp
 //
 #ifdef _WIN32
 #include <SDKDDKVer.h>
