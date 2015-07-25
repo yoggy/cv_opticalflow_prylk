@@ -80,7 +80,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cv_opticalflow_prylk.cpp" />
+    <ClCompile Include="FlowingObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpticalFlowPyrLK.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FlowingObject.h" />
+    <ClInclude Include="OpticalFlowPyrLK.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
